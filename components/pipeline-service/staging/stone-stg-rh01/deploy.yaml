@@ -2072,6 +2072,14 @@ spec:
         tekton-pipelines-remote-resolvers:
           spec:
             replicas: 2
+            template:
+              spec:
+                containers:
+                - args:
+                  - --threads-per-controller=32
+                  - --kube-api-qps=50
+                  - --kube-api-burst=50
+                  name: controller
         tekton-pipelines-webhook:
           spec:
             template:
